@@ -38,7 +38,7 @@ function exportLocationsToMongoDB() {
   var data = range.getValues(); // get the actual data in an array data[row][column]
   
   for (var i=headerRows; i<numRows; i++) {
-    // Make a POST request with form data.
+    // Make a POST request with form data to remove previous data from the database.
     var formData = {
       'name': data[i][columns.name],
       'pendingresidents': data[i][columns.pendingresidents],
@@ -61,6 +61,7 @@ function exportLocationsToMongoDB() {
   }
   
   for (var i=headerRows; i<numRows; i++) {
+    // Make a POST request with form data to add updated data to the database.
     var name = data[i][columns.name];
     var pendingresidents = data[i][columns.pendingresidents];
     var negativeresidents = data[i][columns.negativeresidents];     
